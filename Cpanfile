@@ -1,0 +1,1 @@
+requires 'git@github.com:usualoma/php-session.git';

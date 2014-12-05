@@ -1,0 +1,30 @@
+id: DataAPIFormatPHP
+name: DataAPIFormatPHP
+version: 0.01
+description: <__trans phrase="This plugin enables MT to se.">
+author_name: <__trans phrase="Taku AMANO">
+author_link: http://taaas.jp/
+plugin_link: https://github.com/usualoma/mt-plugin-DataAPIFormatPHP/
+
+applications:
+  data_api:
+    formats:
+      php:
+        mime_type: application/x-php
+        serialize: |
+          sub {
+            require PHP::Session::Serializer::PHP;
+            my $serializer = PHP::Session::Serializer::PHP->new;
+            qq{<?php return unserialize('@{[$serializer->do_encode($_[0])]}'); ?>}
+          }
+        unserialize: |
+          sub {
+            require PHP::Session::Serializer::PHP;
+            my $serializer = PHP::Session::Serializer::PHP->new;
+            $serializer->{buffer} = $_[0];
+            $serializer->change_state('VarType');
+            while (defined $serializer->{buffer} && length $serializer->{buffer}) {
+              $serializer->{state}->parse($serializer);
+            }
+            $serializer->{data};
+          }
