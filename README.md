@@ -23,6 +23,13 @@ Should look like this when installed:
         plugins/
             DataAPIFormatPHP/
 
+## Credit
+
+### About Toph
+Toph is an official character which [Six Apart, Ltd.](http://www.sixapart.jp/) owns.
+Toph is licensed under the CC [BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+The original version is available at the [official page](http://www.sixapart.jp/about/toph.html).
+
 ## LICENSE
 
 Copyright (c) 2014 Taku AMANO
