@@ -1,8 +1,8 @@
 id: DataAPIFormatPHP
 name: DataAPIFormatPHP
 version: 0.01
-description: <__trans phrase="This plugin enables MT to se.">
-author_name: <__trans phrase="Taku AMANO">
+description: "This plugin enables the Data API to export data in PHP source code."
+author_name: "Taku AMANO"
 author_link: http://taaas.jp/
 plugin_link: https://github.com/usualoma/mt-plugin-DataAPIFormatPHP/
 
