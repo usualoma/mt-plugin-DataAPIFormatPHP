@@ -2,6 +2,7 @@ package PHP::Session::Serializer::PHP;
 
 use strict;
 use vars qw($VERSION);
+use Encode;
 $VERSION = 0.26;
 
 sub _croak { require Carp; Carp::croak(@_) }
@@ -90,7 +91,11 @@ sub encode_double {
 
 sub encode_string {
     my($self, $value) = @_;
-    return sprintf 's:%d:"%s";', length($value), $value;
+    my $len
+	= Encode::is_utf8($value)
+	? length( Encode::encode( 'utf8', $value ) )
+	: length($value);
+    return sprintf 's:%d:"%s";', $len, $value;
 }
 
 sub encode_array {
